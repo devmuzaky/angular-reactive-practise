@@ -1,0 +1,77 @@
+<div class="courses-panel">
+
+  <h3>All Courses</h3>
+
+  <mat-tab-group>
+
+    <mat-tab label="Beginners">
+
+      <mat-card *ngFor="let course of beginnerCourses" class="course-card mat-elevation-z10">
+
+        <mat-card-header>
+
+          <mat-card-title>{{course.description}}</mat-card-title>
+
+        </mat-card-header>
+
+        <img [src]="course.iconUrl" mat-card-image>
+
+        <mat-card-content>
+          <p>{{course.longDescription}}</p>
+        </mat-card-content>
+
+        <mat-card-actions class="course-actions">
+
+          <button [routerLink]="['/courses', course.id]" color="primary" mat-button mat-raised-button>
+            VIEW COURSE
+          </button>
+
+          <button (click)="editCourse(course)" color="accent" mat-button
+                  mat-raised-button>
+            EDIT
+          </button>
+
+        </mat-card-actions>
+
+      </mat-card>
+
+    </mat-tab>
+
+    <mat-tab label="Advanced">
+
+      <mat-card *ngFor="let course of advancedCourses" class="course-card mat-elevation-z10">
+
+        <mat-card-header>
+
+          <mat-card-title>{{course.description}}</mat-card-title>
+
+        </mat-card-header>
+
+        <img [src]="course.iconUrl" mat-card-image>
+
+        <mat-card-content>
+          <p>{{course.longDescription}}</p>
+        </mat-card-content>
+
+        <mat-card-actions class="course-actions">
+
+          <button [routerLink]="['/courses', course.id]" class="mat-raised-button mat-primary" mat-button>
+            VIEW COURSE
+          </button>
+
+          <button (click)="editCourse(course)" class="mat-raised-button mat-accent"
+                  mat-button>
+            EDIT
+          </button>
+
+        </mat-card-actions>
+
+      </mat-card>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>
+
