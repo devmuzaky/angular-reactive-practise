@@ -1,0 +1,17 @@
+.my-image {
+  max-width: 300px;
+  border-radius: 4px;
+}
+
+.about {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about button {
+  max-width: 100px;
+  margin-top: 30px;
+}
