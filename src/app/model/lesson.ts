@@ -1,3 +1,6 @@
+
+
+
 export interface Lesson {
   id: number;
   description: string;
@@ -5,4 +8,5 @@ export interface Lesson {
   seqNo: number;
   courseId: number;
   videoId: string;
+
 }
