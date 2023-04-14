@@ -1,17 +1,17 @@
-<ng-container *ngIf="(course$ | async) as course">
+<ng-container *ngIf="(data$ | async) as data">
 
-  <ng-container *ngIf="(lessons$|async) as lessons">
     <div class="course">
-      <h2>{{course?.description}}</h2>
-      <img [src]="course?.iconUrl" class="course-thumbnail">
-      <table class="lessons-table mat-elevation-z7">
+      <h2>{{data.course?.description}}</h2>
+      <img [src]="data.course?.iconUrl" class="course-thumbnail" *ngIf="data.course">
+      <table class="lessons-table mat-elevation-z7" *ngIf="data.lessons.length > 0"
+      >
         <thead>
         <th>#</th>
         <th>Description</th>
         <th>Duration</th>
         </thead>
 
-        <tr class="lesson-row" *ngFor="let lesson of lessons">
+        <tr class="lesson-row" *ngFor="let lesson of data.lessons">
           <td class="seqno-cell">{{lesson.seqNo}}</td>
           <td class="description-cell">{{lesson.description}}</td>
           <td class="duration-cell">{{lesson.duration}}</td>
@@ -23,4 +23,3 @@
 
 
 
-</ng-container>
