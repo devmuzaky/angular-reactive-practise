@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Course} from '../model/course';
 import {Lesson} from '../model/lesson';
@@ -13,17 +13,16 @@ interface CourseData {
 }
 
 @Component({
-  selector: 'course', templateUrl: './course.component.html', styleUrls: ['./course.component.css']
+  selector: 'course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseComponent implements OnInit {
 
-
   data$: Observable<CourseData>;
 
-
   constructor(private route: ActivatedRoute, private coursesService: CoursesService) {
-
-
   }
 
   ngOnInit() {
@@ -35,12 +34,12 @@ export class CourseComponent implements OnInit {
     );
     this.data$ = combineLatest([course$, lessons$]).pipe(
       map(([course, lessons]) => {
-        return {
-          course,
-          lessons
-        };
-      }
-    ));
+          return {
+            course,
+            lessons
+          };
+        }
+      ));
   }
 
 

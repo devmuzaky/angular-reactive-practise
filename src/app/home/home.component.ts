@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Course, sortCoursesBySeqNo} from '../model/course';
-import {CoursesService} from "../services/courses.service";
-import {Observable, throwError} from "rxjs";
-import {catchError, map} from "rxjs/operators";
-import {LoadingService} from "../loading/loading.service";
-import {MessagesService} from "../messages/messages.service";
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Course} from '../model/course';
+import {Observable} from "rxjs";
 import {CoursesStoreService} from "../services/courses-store.service";
 
 
 @Component({
-  selector: 'home', templateUrl: './home.component.html', styleUrls: ['./home.component.css']
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
 

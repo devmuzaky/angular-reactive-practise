@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {EMPTY, Observable} from "rxjs";
 import {Lesson} from "../model/lesson";
 import {CoursesService} from "../services/courses.service";
 
 @Component({
-  selector: 'course', templateUrl: './search-lessons.component.html', styleUrls: ['./search-lessons.component.css']
+  selector: 'course',
+  templateUrl: './search-lessons.component.html',
+  styleUrls: ['./search-lessons.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchLessonsComponent implements OnInit {
 
