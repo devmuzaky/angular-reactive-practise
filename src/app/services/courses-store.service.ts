@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Course, sortCoursesBySeqNo} from "../model/course";
-import {BehaviorSubject, throwError} from "rxjs";
+import {BehaviorSubject, Observable, of, throwError} from "rxjs";
 import {catchError, map, shareReplay, tap} from "rxjs/operators";
 import {CoursesService} from "./courses.service";
 import {LoadingService} from "../loading/loading.service";
@@ -48,5 +48,9 @@ export class CoursesStoreService {
 
     this.loadingService.showLoaderUntilCompleted(loadCourses$)
       .subscribe();
+  }
+
+  saveCourse(courseId: string, changes: Partial<Course>): Observable<any> {
+    return of(null)
   }
 }
