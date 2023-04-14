@@ -6,8 +6,8 @@ import {setTimeout} from 'timers';
 export function saveCourse(req: Request, res: Response) {
 
 
-  res.sendStatus(500);
-  return;
+  // res.sendStatus(500);
+  // return;
 
 
 

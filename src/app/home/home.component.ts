@@ -5,6 +5,7 @@ import {Observable, throwError} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 import {LoadingService} from "../loading/loading.service";
 import {MessagesService} from "../messages/messages.service";
+import {CoursesStoreService} from "../services/courses-store.service";
 
 
 @Component({
@@ -16,9 +17,7 @@ export class HomeComponent implements OnInit {
   advancedCourses$: Observable<Course[]>;
 
   constructor(
-    private courseService: CoursesService,
-    private loadingService: LoadingService,
-    private messagesService: MessagesService
+    private courseStore: CoursesStoreService
   ) {
 
   }
@@ -29,23 +28,8 @@ export class HomeComponent implements OnInit {
 
   reloadCourses() {
 
-    const courses$ = this.courseService.loadAllCourses()
-      .pipe(
-        map(courses => courses.sort(sortCoursesBySeqNo)),
-        catchError(err => {
-          const message = 'Could not load courses';
-          this.messagesService.showMessage(message);
-          return throwError(err)
-        })
+    this.beginnerCourses$ = this.courseStore.filterByCategory('BEGINNER');
 
-      );
-
-    const loadCourses$ = this.loadingService.showLoaderUntilCompleted(courses$);
-
-    this.beginnerCourses$ = loadCourses$
-      .pipe(map(courses => courses.filter(course => course.category == 'BEGINNER')));
-
-    this.advancedCourses$ = loadCourses$
-      .pipe(map(courses => courses.filter(course => course.category == 'ADVANCED')));
+    this.advancedCourses$ = this.courseStore.filterByCategory('ADVANCED');
   }
 }

@@ -34,6 +34,9 @@ import {MessagesComponent} from './messages/messages.component';
 import {SearchLessonsComponent} from './search-lessons/search-lessons.component';
 import {LoadingComponent} from './loading/loading.component';
 import { CourseCardListComponent } from './courses-card-list/course-card-list.component';
+import {CoursesService} from "./services/courses.service";
+import {MessagesService} from "./messages/messages.service";
+import {LoadingService} from "./loading/loading.service";
 
 @NgModule({
   declarations: [
@@ -75,7 +78,10 @@ import { CourseCardListComponent } from './courses-card-list/course-card-list.co
     MatMomentDateModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    MessagesService,
+    LoadingService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [CourseDialogComponent]
 })
