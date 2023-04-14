@@ -4,11 +4,11 @@
   <mat-tab-group>
 
     <mat-tab label="Beginners">
-      <course-card-list (coursesChanged)="reloadCourses()" [course]="beginnerCourses$ | async"></course-card-list>
+      <course-card-list [course]="beginnerCourses$ | async"></course-card-list>
     </mat-tab>
 
     <mat-tab label="Advanced">
-      <course-card-list (coursesChanged)="reloadCourses()" [course]="advancedCourses$ | async"></course-card-list>
+      <course-card-list [course]="advancedCourses$ | async"></course-card-list>
     </mat-tab>
 
   </mat-tab-group>
