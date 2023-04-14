@@ -22,12 +22,14 @@
         <span>Register</span>
       </a>
 
-      <a mat-list-item routerLink="login">
+      <a mat-list-item routerLink="login" *ngIf="authStore.isLoggedOut$ | async" >
         <mat-icon>account_circle</mat-icon>
         <span>Login</span>
       </a>
 
-      <a (click)="logout()" mat-list-item>
+      <a (click)="logout()" mat-list-item
+          *ngIf="authStore.isLoggedIn$ | async"
+      >
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
